@@ -4,54 +4,47 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class getPermutation {
-	public String getPermutation(int n, int k) {
-		List<Integer> tempList = new ArrayList<Integer>();
+	//½â·¨Ò»: ¹Ø¼üÊÇÁË½âµ½permutationµÄÅÅĞò¹æÂÉ
+	//      ÒÔ n = 3ÎªÀı, 1 2 3, 1 3 2, 2 1 3, 2 3 1, 3 1 2, 3 2 1
+	//      1 --> 2Ö®¼äÓĞ 2!¸öÅÅĞò£¬ 1 2 3, 1 3 2, 2 1 3
+	//      Èç¹ûk = 3, 3 / 2! = 1, ËµÃ÷ k = 3, µÚÒ»¸ö×Ö·ûÒ»¶¨Îª 2
+	//      a. ÉèÖÃ list À´Ìí¼Ó 1 - n µÄÊıÖµ, Ã¿ÕÒµ½Ò»¸ö¾ÍÉ¾³ıÒ»¸ö, list»¹ÊÇ±£³Ö´ÓĞ¡µ½´óË³Ğò
+	//      b. ¶¨ÒåfactorialÊı×é»òÕßfactorialº¯Êı, ÖªµÀÈçºÎÇó½âfactorial
+	//      c. ÖªµÀÈçºÎ¸ù¾İkÖµºÍ(n - 1)!Çóindex, ÕÒµ½Ã¿Ò»¸ödigit
+	public static String getPermutation(int n, int k) {
+		List<Integer> list = new ArrayList<Integer>();
 		for (int i = 1; i <= n; i++) {
-			tempList.add(i);
+			list.add(i);
 		}
-
-		int[] factorial = factorialRes(n);
 		
-		String result = getResult(n, k, tempList, factorial);
-		
-		return result;
+		int result = 0;
+		k--;
+		for(int i = 1; i <= n; i++){
+			int index = k / factorial(n - i);
+			int digit = list.get(index);
+			result = result * 10 + digit;
+			list.remove(index);
+			k = k % factorial(n - i);
+		}
+		return Integer.toString(result);
 	}
 
-	//å®šä¹‰ä¸ªfactorialResæ–¹æ³•ï¼Œè¿”å›ä¸€ä¸ªint[]æ•°ç»„ï¼Œæ•°ç»„è®°å½•äº†æ‰€æœ‰(n - 1)ï¼çš„å€¼ï¼Œresult[n - 1] == (n - 1)!, 
-	//è¿™æ ·æƒ³æ±‚(n - 1)!çš„æ—¶å€™ä¸ç”¨å†™å…¬å¼è®¡ç®—ï¼Œç›´æ¥å–result[n - 1]çš„å€¼å³å¯
-	public int[] factorialRes(int n) {
-		int[] result = new int[n];
-		result[0] = 1;
-		for (int i = 1; i < n; i++) {
-			result[i] = i * result[i - 1];
+	public static int factorial(int n) {
+		int result1 = 1;
+		while (n > 0) {
+			result1 = result1 * n;
+			n--;
 		}
-		return result;
-	}
-	
-	//è§£é¢˜æ€è·¯ï¼šhttps://discuss.leetcode.com/topic/17348/explain-like-i-m-five-java-solution-in-o-n
-	//å¯¹äº[1,2,3,4]æ¥è¯´, å½“ç¬¬ä¸€ä¸ªå­—ç¬¦ä¸º1æ—¶ï¼Œæœ‰1 + 2 3 4/2 4 3...ç­‰(n - 1)!ç§å¯èƒ½ï¼Œå½“ç¬¬ä¸€ä¸ªå­—ç¬¦ä¸º2æ—¶, æœ‰2 + 1 3 4/2 + 1 4 3...ç­‰(n - 1)!ç§å¯èƒ½ï¼Œ
-	//â‘ æ±‚index: åŸºäºæ­¤ï¼Œæˆ‘ä»¬å¯ä»¥æ ¹æ®kçš„å€¼æ¨æ–­ç¬¬ä¸€ä¸ªå­—ç¬¦ä¸ºä»€ä¹ˆï¼Œk = 17ï¼Œé‚£ä¹ˆç¬¬ä¸€ä¸ªæ•°åº”è¯¥ä¸º3, å› ä¸º17 > 2x6, index = (k - 1)/(n - 1)! = 16/6 = 2
-	//æ³¨æ„ï¼Œä¸ºä»€ä¹ˆè®¡ç®—indexçš„æ—¶å€™ä½¿ç”¨(k - 1)è€Œä¸æ˜¯k? å› ä¸ºindexéƒ½ä»0å¼€å§‹ï¼Œå¦‚æœä½¿ç”¨kä¼šout of bound of index
-	//â‘¡æ·»åŠ å­—ç¬¦:str.append(tempList.get(index)) = str.append(tempList.get(2)) = str.append(3)
-	//â‘¢æ›´æ–°æ•°åˆ—å’Œkå€¼: æ•°åˆ—ä¸ºtempList.remove(index), kå€¼ä¸ºk = k - factorial[tempList.size() - 1]*index = 17 - 6 * 2 = 5
-	
-	public String getResult(int n, int k, List<Integer> tempList, int[] factorial){
-		StringBuilder str = new StringBuilder();
-		for(int i = 0; i < n; i++){
-			int index = (k - 1)/factorial[tempList.size() - 1];
-			String s = Integer.toString(tempList.get(index));
-			str.append(s);
-			k = k - factorial[tempList.size() - 1]*index;
-			tempList.remove(index);
-		}
-		return str.toString();
+		return result1;
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int i = 3;
-		String s = Integer.toString(i);
-		System.out.println(s);
+		//getPermutation(1, 1);
+		List<Integer> list = new ArrayList<Integer>();
+		list.add(1);
+		list.add(2);
+		System.out.println(list.get(1));
 
 	}
 

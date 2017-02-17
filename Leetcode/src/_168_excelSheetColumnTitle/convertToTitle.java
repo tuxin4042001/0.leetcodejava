@@ -1,23 +1,29 @@
 package _168_excelSheetColumnTitle;
 
 public class convertToTitle {
-	public String convertToTitle(int n){
+	public String convertToTitle(int n) {
 		StringBuilder result = new StringBuilder("");
-		while(n > 26){
-			result.append((char)(n%26 + 65));
-			n /= 26;
-	    }
-	    return result.toString();
+		while (n != 0) {
+			char c = (char) ((n - 1) % 26 + 65);
+			result.append(c);
+			n = (n - 1) / 26;
+		}
+		return result.reverse().toString();
+	}
+
+	public String convertToTitle2(int n) {
+		String result = "";
+		while (n != 0) {
+			char c = (char) ((n - 1) % 26 + 65);
+			result = c + result;
+			n = (n - 1) / 26;
+		}
+		return result;
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		//ASCII intå’Œcharç›¸äº’è½¬åŒ–è¡¨
-		char a = (char)(1+97);
-		char b = (char)(1+65);
-		System.out.println(a);
-		System.out.println(b);
-		int i = 30;
-		System.out.println(i/26);
+		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+
 	}
+
 }

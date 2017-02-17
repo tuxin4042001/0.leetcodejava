@@ -1,56 +1,23 @@
 package _50_powXN;
 
-public class myPow {
-	//æ–¹æ³•ä¸€ï¼š é‡‡ç”¨è¿­ä»£æ³•æ±‚è§£myPow, å…³é”®å¾—åŒºåˆ†å‡ ä¸ªæƒ…å†µ
-	//      a. x == 0 çš„æƒ…å†µ, x == 0 && n < 0 æœ‰å½±å“, æ­¤æ—¶ç»“æžœåº”è¯¥ä¸ºInteger.Max_VALUE;
-	//      b. n == 0, ä»»ä½•æƒ…å†µä¸‹ n == 0 ç»“æžœä¸º1;
-	//      c. n < 0, x = 1/x, å¯¹æ¢ä¸€ä¸‹ä½ç½®;
-	//      d. pow(x, n) é‡‡ç”¨äºŒåˆ†æ³•æ±‚è§£, x * x = x ^ 2, x ^ 2 * x ^ 2 = x ^ 4, x ^ 4 * x ^ 4 = x ^ 8...., è¿™æ ·çš„è¯å°±ä¼šå¾ˆå¿«é€¼è¿‘x ^ n
-	//      return (n % 2 == 0)? myPow(x * x, n/2) : x * myPow(x * x, n/2);
-	//      return sum * myPow(x, n - multiple);
+public class MyPow {
     public double myPow(double x, int n) {
-        
-    	if(x == 0 && n < 0){
-    		return Integer.MAX_VALUE;
-    	}
-        if(n == 0) return 1;
+    	//µ±³öÏÖ¼«ÖµµÄÇé¿öÏÂ£¬½á¹û·µ»Ø0
+        if(n == Integer.MIN_VALUE && x > 1)
+            return 0;
+        if(n == 0) 
+        	return 1;
+        //µ±Ö¸Êýn < 0µÄÊ±ºò£¬Ïë°ì·¨×ª»¯Îªn > 0µÄÇé¿ö
         if(n < 0){
-            if(n == -2147483648){
-                n = -2147483646;
-            }
-            n = -n;
+        	n = -n;
         	x = 1/x;
         }
-        
-        return (n % 2 == 0)? myPow(x * x, n/2) : x * myPow(x * x, n/2);
-    }
-    
-    public double myPow2(double x, int n) {
-        if(x == 0 && n < 0){
-        	return Integer.MAX_VALUE;
-        }
-        if(n == 0) return 1;
-        if(n < 0){
-            if(n == -2147483648){
-                n = -2147483646;
-            }
-            n = -n;
-        	x = 1/x;
-        }
-        
-        double sum = x;
-        int multiple = 1;
-        while(multiple + multiple < n){
-        	sum = sum * sum;
-        	multiple = multiple + multiple;
-        }
-        return sum * myPow(x, n - multiple);
+        //Ê¹ÓÃµü´úµÄ·½·¨ÇómyPow(x,n),×¢ÒâÕâÀïÊ¹ÓÃ myPow(x*x,n/2)¶ø²»Ê¹ÓÃ myPow(x,n/2)*myPow(x,n/2),Ô­Àí¶¼ÊÇÒ»ÑùµÄ£¬µ«ÊÇÇ°Õß¿éºÜ¶à²»ÓÃÁ½´Îµü´ú
+        return (n % 2 == 0) ? myPow(x*x, n/2) : x*myPow(x*x, n/2); 
     }
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		double i = Math.pow(0, -1);
-		System.out.println(i);
+		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
 
 	}
 

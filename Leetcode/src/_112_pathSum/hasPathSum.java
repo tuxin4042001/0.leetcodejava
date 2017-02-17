@@ -1,19 +1,9 @@
 package _112_pathSum;
 
-import _01_binaryTree.TreeNode;
-
-public class hasPathSum {
-	//鏂规硶涓�锛氶噰鐢ㄨ凯浠ｇ殑鏂规硶锛屽叧閿敞鎰弐oot == null鐨勬椂鍊欙紝return false
-    public boolean hasPathSum(TreeNode root, int sum) {
-        if(root == null)
-        	return false;
-        if(root.left == null && root.right == null && root.val == sum)
-        	return true;
-        return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
-    }
+public class HasPathSum {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// TODO 自动生成的方法存根
 
 	}
 

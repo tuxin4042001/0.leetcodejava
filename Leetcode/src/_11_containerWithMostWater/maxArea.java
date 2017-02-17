@@ -1,36 +1,48 @@
 package _11_containerWithMostWater;
 
 public class maxArea {
-    public int MaxArea(int[] height) {
-    	int leftIndex = 0, rightIndex = height.length - 1;
-    	int lh = height[leftIndex], rh = height[rightIndex];
-    	int area = 0;
-    	int temp;
-    	while(leftIndex < rightIndex){
-    		temp = Math.min(lh, rh)*(rightIndex - leftIndex);
-    		if(area < temp) area = temp;
-    		
-    		if(lh < rh){
-    			while(leftIndex < rightIndex && height[leftIndex] <= lh){
-    				leftIndex++;
-    			}
-    			if(leftIndex < rightIndex){
-    				lh = height[leftIndex];
-    			}
-    		}else{
-    			while(leftIndex < rightIndex && height[rightIndex] <= rh){
-    				rightIndex--;
-    			}
-    			if(leftIndex < rightIndex){
-    				rh = height[rightIndex];
-    			}
-    		}
-    	}
-    	return area;     
-    }
+	public static int maxArea(int[] height){
+		int lh = 0, rh = height.length - 1;
+		int leftIndex = lh, rightIndex = rh;
+		int maxArea = 0;
+		while(lh < rh){
+			if(height[lh] < height[rh]){
+				leftIndex = lh;
+				while(height[leftIndex] < height[lh] && leftIndex < rightIndex){
+					leftIndex++;
+	            }
+	            if(Math.min(height[leftIndex], height[rightIndex])*(rightIndex - leftIndex) > 
+	            Math.min(height[lh], height[rightIndex]) * (rightIndex - lh)){
+	            	lh = leftIndex;
+	            	maxArea = Math.min(height[leftIndex], height[rightIndex])*(rightIndex - leftIndex);
+	            }else{
+	            	maxArea = Math.min(height[lh], height[rightIndex]) * (rightIndex - lh);
+	            }
+	        }
+	        
+	        if(height[rh] < height[lh]){
+	        	rightIndex = rh;
+	            while(height[rightIndex] < height[rh] && rightIndex > leftIndex){
+	            	rightIndex--;
+	            }
+	            if(Math.min(height[rightIndex], height[leftIndex])*(rightIndex - leftIndex) > 
+	            Math.min(height[rh], height[leftIndex]) * (rh - leftIndex)){
+	            	rh = rightIndex;
+	            	maxArea = Math.min(height[rightIndex], height[leftIndex])*(rightIndex - leftIndex);
+	            }else{
+	            	maxArea = Math.min(height[rh], height[leftIndex]) * (rh - leftIndex);
+	            }
+	        }
+	    }
+		return maxArea;
+	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// TODO 自动生成的方法存根
+		int[] nums = {2,1,5,7,9,10};
+		int area = maxArea(nums);
+		System.out.println(area);
 
 	}
+
 }

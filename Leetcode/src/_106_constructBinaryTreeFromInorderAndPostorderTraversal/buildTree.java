@@ -1,6 +1,6 @@
 package _106_constructBinaryTreeFromInorderAndPostorderTraversal;
 
-import _01_binaryTree.TreeNode;
+import _03_binaryTree.TreeNode;
 
 public class buildTree {
     public TreeNode buildTree(int[] inorder, int[] postorder) {
@@ -11,22 +11,20 @@ public class buildTree {
     	if(poststart > postend || instart > inend){
     		return null;
     	}
-    	
     	TreeNode root = new TreeNode(postorder[postend]);
     	int inIndex = 0;
     	for(int i = 0; i < inorder.length; i++){
     		if(inorder[i] == postorder[postend]){
     			inIndex = i;
-    			break;
     		}
     	}
     	root.left = helper(poststart, poststart + inIndex - instart - 1, instart, inIndex - 1, inorder, postorder);
-    	root.right = helper(poststart + inIndex - instart, postend - 1, inIndex + 1, inend, inorder, postorder);
+    	root.right = helper(poststart + inIndex - instart, postend, inIndex + 1, inend, inorder, postorder);
     	return root;
     }
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// TODO 自动生成的方法存根
 
 	}
 

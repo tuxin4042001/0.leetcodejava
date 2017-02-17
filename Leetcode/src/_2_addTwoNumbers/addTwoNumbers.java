@@ -1,15 +1,9 @@
 package _2_addTwoNumbers;
 
-
-class ListNode {
-     int val;
-     ListNode next;
-     ListNode(int x) { val = x; }
-}
-
+import _02_public_LinkList.ListNode;
 
 public class addTwoNumbers {
-	public ListNode addTwoNumbers(ListNode l1, ListNode l2){
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 		int valL1 = 0;
 		int valL2 = 0;
 		int carry = 0;
@@ -45,10 +39,10 @@ public class addTwoNumbers {
 			currNodeSum.next = new ListNode(carry);
 		}
 	     return sum1.next;
-	}
+    }
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// TODO 自动生成的方法存根
 
 	}
 
