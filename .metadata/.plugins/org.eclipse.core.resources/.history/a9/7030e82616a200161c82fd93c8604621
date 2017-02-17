@@ -1,0 +1,15 @@
+package _192_reverseBits;
+
+public class reverseBits {
+
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Integer j = 4;
+		String str = j.toBinaryString(j);
+		for(int i = 0; i < str.length() - 1; i++){
+			System.out.print(str.charAt(i));
+		}
+	}
+
+}

@@ -1,0 +1,44 @@
+package _150_evaluateReservePolishNotation;
+
+import java.util.Stack;
+
+public class evalRPN {
+	public int evalRPN(String[] tokens) {
+		Stack<Integer> stack = new Stack<Integer>();
+		int op1, op2;
+		for (int i = 0; i < tokens.length; i++) {
+			switch (tokens[i]) {
+			case "+":
+				op1 = stack.pop();
+				op2 = stack.pop();
+				stack.push(op2 + op1);
+				break;
+			case "-":
+				op1 = stack.pop();
+				op2 = stack.pop();
+				stack.push(op2 - op1);
+				break;
+			case "*":
+				op1 = stack.pop();
+				op2 = stack.pop();
+				stack.push(op2 * op1);
+				break;
+			case "/":
+				op1 = stack.pop();
+				op2 = stack.pop();
+				stack.push(op2 / op1);
+				break;
+			default:
+				stack.push(Integer.parseInt(tokens[i]));
+				break;
+			}
+		}
+		return stack.pop();
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

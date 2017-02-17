@@ -1,0 +1,10 @@
+package _119_pascalTriangleII;
+
+public class getRow {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

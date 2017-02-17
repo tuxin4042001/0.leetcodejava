@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;_192_reverseBits&apos; to &apos;_190_reverseBits&apos;&#x0D;&#x0A;- Original project: &apos;Leetcode&apos;&#x0D;&#x0A;- Original element: &apos;Leetcode/src/_192_reverseBits&apos;&#x0D;&#x0A;- Renamed element: &apos;Leetcode/src/_190_reverseBits&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;_192_reverseBits&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;_192_reverseBits" name="_190_reverseBits" qualified="false" references="true" stamp="1478557589289" textual="false" version="1.0"/>
+</session>

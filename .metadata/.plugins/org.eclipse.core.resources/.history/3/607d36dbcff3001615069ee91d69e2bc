@@ -1,0 +1,10 @@
+package _60_permutationSequence;
+
+public class getPermutation2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

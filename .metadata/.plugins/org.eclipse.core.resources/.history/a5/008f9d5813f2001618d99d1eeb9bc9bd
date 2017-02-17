@@ -1,0 +1,10 @@
+package _74_searchA2DMatrix;
+
+public class searchMatrix {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

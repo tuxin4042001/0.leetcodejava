@@ -1,0 +1,13 @@
+package _192_reverseBits;
+
+public class reverseBits {
+
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Integer j = 4;
+		String str = j.toBinaryString(j);
+		System.out.println(str);
+	}
+
+}

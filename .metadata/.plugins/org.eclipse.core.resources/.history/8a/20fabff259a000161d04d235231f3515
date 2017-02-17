@@ -1,0 +1,11 @@
+package _168_excelSheetColumnTitle;
+
+public class convertToTitle {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		char a = (char)(1+48);
+		System.out.println(a);
+	}
+
+}

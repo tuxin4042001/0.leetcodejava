@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;_05_longestPalindromeSubstring&apos; to &apos;_5_longestPalindromeSubstring&apos;&#x0D;&#x0A;- Original project: &apos;Leetcode&apos;&#x0D;&#x0A;- Original element: &apos;Leetcode/src/_05_longestPalindromeSubstring&apos;&#x0D;&#x0A;- Renamed element: &apos;Leetcode/src/_5_longestPalindromeSubstring&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;_05_longestPalindromeSubstring&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;_05_longestPalindromeSubstring" name="_5_longestPalindromeSubstring" qualified="false" references="true" stamp="1480018257299" textual="false" version="1.0"/>
+</session>

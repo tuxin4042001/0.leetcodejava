@@ -1,0 +1,17 @@
+package _18_4Sum;
+
+import java.util.Arrays;
+
+public class fourSum {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] nums = {1,2,3,4,5,6};
+		int[] nums1 = Arrays.copyOfRange(nums, 2, 6);
+		for(int num : nums1){
+			System.out.print(num + " ");
+		}
+
+	}
+
+}

@@ -1,0 +1,10 @@
+package _118_pascalTriangle;
+
+public class generate {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

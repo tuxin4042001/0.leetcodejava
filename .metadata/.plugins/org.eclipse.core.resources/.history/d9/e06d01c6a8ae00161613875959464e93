@@ -1,0 +1,10 @@
+package _8_stringToIntegerAToI;
+
+public class MyAtoi {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

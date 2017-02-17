@@ -1,0 +1,38 @@
+package _60_permutationSequence;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class getPermutation2 {
+    public static String getPermutation(int n, int k) {
+        List<Integer> list = new ArrayList<Integer>();
+        for(int i = 1; i <= n; i++){
+        	list.add(i);
+        }
+        int result = 0;
+        while(list.size() > 0){
+        	int digit = list.get(k/factorial(n - 1));
+        	list.remove(k/factorial(n - 1));
+        	result = result * 10 + digit;
+        	n = n - 1;
+        }
+        return Integer.toString(result);
+    }
+    
+    public static int factorial(int n){
+    	int result1 = 1;
+    	while(n > 0){
+    		result1 = result1 * n;
+    		n--;
+    	}
+    	return result1;
+    }
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int i = 3;
+		System.out.println(factorial(3));
+
+	}
+
+}
